@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getEvent, deleteEvent, putEvent } from '../actions';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
 
 class EventShow extends Component{
 
@@ -21,10 +23,14 @@ class EventShow extends Component{
     const{ input, label, type, meta: {touched, error} } = field
 
     return (
-      <div>
-       <input {...input} placeholder={label} type={type}/> 
-        {touched && error && <span>{error}</span>}
-      </div>
+      <TextField
+        hintText={label}
+        floatingLabelText={label}
+        type={type}
+        errorText={touched && error}
+        {...input}
+        fullWidth={true}
+      />
     )
   }
 
@@ -42,6 +48,8 @@ class EventShow extends Component{
 
     const { handleSubmit, pristine, submitting, invalid } = this.props
 
+    const style = {margin: 10}
+
     return (
       <React.Fragment>
         <form onSubmit={handleSubmit(this.onSubmit)}>
@@ -52,9 +60,9 @@ class EventShow extends Component{
             <Field label="Body" name="body" type="text" component={this.renderField} />
           </div>
           <div>
-            <input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
-            <Link to="/">Cancel</Link>
-            <Link to="/" onClick={this.onDeleteClick}>Delete</Link>
+            <RaisedButton label="submit" type="submit" style={style} disabled={pristine || submitting || invalid} primary={true}/>
+            <RaisedButton label="Cancel" type="submit" style={style} containerElement={<Link to="/"/>}/>
+            <RaisedButton label="Delete" style={style} onClick={this.onDeleteClick} secondary={true}/>
           </div>
         </form>
       </React.Fragment>
