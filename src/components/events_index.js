@@ -14,6 +14,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import Appbar from 'material-ui/AppBar'
 import _ from 'lodash'; 
+import Footer from './common/footer'
 
 class EventsIndex extends Component{
 
@@ -56,6 +57,7 @@ class EventsIndex extends Component{
             {this.renderEvents()}
           </TableBody>
         </Table>
+        <Footer title="TodoApp"/>
       </React.Fragment>
     )
   }

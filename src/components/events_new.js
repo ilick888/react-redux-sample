@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
+import Appbar from 'material-ui/AppBar'
 
 class EventsNew extends Component{
 
@@ -41,6 +42,7 @@ class EventsNew extends Component{
 
     return (
       <React.Fragment>
+        <Appbar title="TodoApp" position="static"></Appbar>
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div>
             <Field label="Title" name="title" type="text" component={this.renderField} />
